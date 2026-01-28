@@ -203,7 +203,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import localDbService from '../../services/db/local-db.service'
 
 // 状态数据
@@ -217,7 +217,6 @@ const historicalSignals = ref<any[]>([])
 
 // 路由
 const route = useRoute()
-const router = useRouter()
 
 // 工具函数
 function getSignalTypeClass(type: string): string {
@@ -353,7 +352,7 @@ function generateRelatedAssets(baseAsset: string): any[] {
 }
 
 // 生成历史信号数据
-function generateHistoricalSignals(asset: string): any[] {
+function generateHistoricalSignals(): any[] {
   const types = ['trend', 'momentum', 'reversal']
   const history = []
   const today = new Date()
@@ -394,7 +393,7 @@ async function loadSignalDetail() {
       relatedAssets.value = generateRelatedAssets(foundSignal.asset)
       technicalIndicators.value = generateTechnicalIndicators()
       marketSentiment.value = generateMarketSentiment()
-      historicalSignals.value = generateHistoricalSignals(foundSignal.asset)
+      historicalSignals.value = generateHistoricalSignals()
     } else {
       // 如果找不到对应ID的信号，使用第一个信号作为示例
       if (signals.length > 0) {
@@ -402,7 +401,7 @@ async function loadSignalDetail() {
         relatedAssets.value = generateRelatedAssets(signals[0].asset)
         technicalIndicators.value = generateTechnicalIndicators()
         marketSentiment.value = generateMarketSentiment()
-        historicalSignals.value = generateHistoricalSignals(signals[0].asset)
+        historicalSignals.value = generateHistoricalSignals()
       }
     }
   } catch (err) {

@@ -107,7 +107,6 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import localDbService from '../../services/db/local-db.service'
 
 // 状态数据
@@ -119,8 +118,7 @@ const filterType = ref('all')
 const currentPage = ref(1)
 const pageSize = ref(10)
 
-// 路由
-const router = useRouter()
+
 
 // 计算属性
 const filteredSignals = computed(() => {

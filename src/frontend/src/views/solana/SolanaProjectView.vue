@@ -299,7 +299,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, nextTick, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import * as d3 from 'd3'
 import localDbService from '../../services/db/local-db.service'
 
@@ -314,7 +314,6 @@ const timeRange = ref('30d')
 
 // 路由
 const route = useRoute()
-const router = useRouter()
 
 // 监听时间范围变化，重新生成图表
 watch(timeRange, () => {
@@ -640,13 +639,13 @@ function enhanceProjectData(baseProject: any) {
 
   return {
     ...baseProject,
-    description: descriptions[baseProject.name] || '这是一个Solana生态系统中的项目，提供创新的区块链解决方案。',
-    category: categories[baseProject.name] || 'Other',
-    token: tokens[baseProject.name] || 'TOKEN',
+    description: descriptions[baseProject.name as keyof typeof descriptions] || '这是一个Solana生态系统中的项目，提供创新的区块链解决方案。',
+    category: categories[baseProject.name as keyof typeof categories] || 'Other',
+    token: tokens[baseProject.name as keyof typeof tokens] || 'TOKEN',
     launchDate: launchDate.toISOString().split('T')[0],
-    website: links[baseProject.name]?.website || '',
-    twitter: links[baseProject.name]?.twitter || '',
-    github: links[baseProject.name]?.github || '',
+    website: links[baseProject.name as keyof typeof links]?.website || '',
+    twitter: links[baseProject.name as keyof typeof links]?.twitter || '',
+    github: links[baseProject.name as keyof typeof links]?.github || '',
     marketData: {
       price: price,
       marketCap: marketCap,

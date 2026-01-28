@@ -288,7 +288,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import localDbService from '../../services/db/local-db.service';
 
 // 状态数据
 const isLoading = ref(false);

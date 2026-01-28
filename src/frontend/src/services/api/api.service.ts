@@ -60,7 +60,7 @@ class ApiService {
   }
 
   // POST 请求 - 使用本地数据库服务
-  async post<T = any>(url: string, data?: any, config?: any): Promise<T> {
+  async post<T = any>(url: string, _data?: any, _config?: any): Promise<T> {
     // 模拟 POST 请求
     if (url === '/commerce/subscriptions') {
       const subscriptions = await localDbService.getUserSubscriptions();
@@ -72,7 +72,7 @@ class ApiService {
   }
 
   // PUT 请求 - 使用本地数据库服务
-  async put<T = any>(url: string, data?: any, config?: any): Promise<T> {
+  async put<T = any>(url: string, _data?: any, _config?: any): Promise<T> {
     // 模拟 PUT 请求
     if (url.includes('/commerce/subscriptions/')) {
       const subscriptions = await localDbService.getUserSubscriptions();
@@ -84,7 +84,7 @@ class ApiService {
   }
 
   // DELETE 请求 - 使用本地数据库服务
-  async delete<T = any>(url: string, config?: any): Promise<T> {
+  async delete<T = any>(url: string, _config?: any): Promise<T> {
     // 模拟 DELETE 请求
     if (url.includes('/commerce/subscriptions/')) {
       return { message: 'Subscription cancelled successfully' } as T;
@@ -95,7 +95,7 @@ class ApiService {
   }
 
   // PATCH 请求 - 使用本地数据库服务
-  async patch<T = any>(url: string, data?: any, config?: any): Promise<T> {
+  async patch<T = any>(_url: string, _data?: any, _config?: any): Promise<T> {
     // 默认返回空数据
     return {} as T;
   }
