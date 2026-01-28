@@ -22,7 +22,7 @@ export default defineConfig({
   },
   base: '/trendmatrix/',
   build: {
-    outDir: '../../dist',
+    outDir: '../../docs',
     sourcemap: true
   }
 })
