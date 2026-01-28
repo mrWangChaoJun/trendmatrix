@@ -20,6 +20,7 @@ export default defineConfig({
       }
     }
   },
+  base: '/trendmatrix/',
   build: {
     outDir: '../../dist',
     sourcemap: true
